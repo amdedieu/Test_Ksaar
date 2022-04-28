@@ -1,17 +1,17 @@
 
-function closerOfZero(tab){
+function abs(num){
+	return num < 0 ? -num : num;
+}
+function closestToZero(tab){
 	if (!tab || tab.length == 0)
 		return 0;
-	var num = tab[0]; // will stock the closest number of zero
-	for (let i; i <= tab.length; i++){
-		if(Maths.abs(num) > Maths.abs(tab[i])) // compare with absolute value to simplify the negative part
+	let num = tab[0]; // init the return value
+	for (let i = 0; i < tab.length; i++){
+		if(abs(num) > abs(tab[i])) // compare with absolute value 
 			num = tab[i];
-		else if (Maths.abs(num) === Maths.abs(tab[i]) && num < tab[i]){ // compare if the absolute value are equal && if the original num is < tab[i]
-				num = tab[i] // so we assign the value of the original tab who is the positive closest number of 0
+		else if (abs(num) === abs(tab[i]) && num < tab[i]){ // compare if the absolute value are equal and if the original number is inferior to tab[i] 
+				num = tab[i] // assign the non absolute value who is the positive closest number to 0
 		}
-		return num;
 	}
+	return num;
 }
-
-
-console.log(closerOfZero(0));
